@@ -1,0 +1,127 @@
+<hr>
+<div class="container  shadow p-3 mb-5 bg-white rounded">
+
+  <hr>
+  <br>
+  
+  <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Voting Report </h5>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+    <mat-form-field>
+        <input matInput [matDatepicker]="fromdate" placeholder="From Date" name="fromdate"  
+        [(ngModel)]="model.fromdate"             >
+        <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+        <mat-datepicker #fromdate></mat-datepicker>
+    </mat-form-field>
+</div>
+
+<div class="form-group col-md-4">
+    <mat-form-field>
+        <input matInput [matDatepicker]="todate" placeholder="To date" name="todate"   
+        
+          [(ngModel)]="model.todate"      >
+        <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+        <mat-datepicker #todate></mat-datepicker>
+    </mat-form-field>
+</div>
+<div class="form-group col-md-4">
+  <mat-form-field>
+  <mat-label>Status</mat-label>
+  <mat-select name="Type" [(ngModel)]="model.status">
+    <mat-option  value="All" selected >All</mat-option>
+    <mat-option  value="Open">Open</mat-option>
+    <mat-option  value="Closed">Closed</mat-option>
+  </mat-select>
+</mat-form-field> 
+</div>
+<div class="form-group col-md-4">
+<button style="background: #7ace0b;" type="button" 
+mat-button (click)="LoadVotingResultData()" class="shadow"> View</button>
+</div>
+</div>
+  <div class="table-responsive">
+    <table class="table table-striped ">
+      <thead>
+        <tr>
+          <th scope="col">Company</th>
+          <th scope="col">Pre Avg</th>
+          <th scope="col">Post Avg</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let TT of votingDataList">
+        <tr>
+          <td scope="col"> {{TT.cardname}}</td>
+          <td scope="col"> {{TT.pre_avg | number}}</td>
+          <td scope="col"> {{TT.post_avg | number}}</td>
+          <td scope="col"> {{TT.status}}</td>
+        </tr>
+
+        <button type="button" (click)="showMyContainer=!showMyContainer" class="btn btn-link">Details</button>
+        <table *ngIf="showMyContainer" class="table table-striped ">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Pre </th>
+              <th scope="col">Post </th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let T2 of TT.voteLines">
+            <tr>
+              <td scope="col"> {{T2.user | titlecase}}</td>
+              <td scope="col"> {{T2.pre_rate}}</td>
+              <td scope="col"> {{T2.post_rate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+<!-- 
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+
+    <ng-container matColumnDef="cardname">
+      <mat-header-cell *matHeaderCellDef> Client </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cardname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pre_avg">
+      <mat-header-cell *matHeaderCellDef> Pre-avg </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.pre_avg}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="post_avg">
+      <mat-header-cell *matHeaderCellDef> Post-avg </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.post_avg}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let detail"> 
+        
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+            matRipple 
+            class="element-row" 
+            [class.expanded]="expandedElement == row"
+            (click)="expandedElement = row"></mat-row>
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+            [@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'"
+            style="overflow: hidden"> 
+    </mat-row>
+  </mat-table>
+</div> -->
+
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

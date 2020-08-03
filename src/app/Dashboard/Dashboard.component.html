@@ -1,0 +1,140 @@
+<br><br> <br><br>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+  <div style="text-align: left;  ">
+    
+    
+    <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Dashboard</h5>
+  </div>
+
+  <div class="inset" flex>
+    <div layout-gt-xs="row" layout-wrap>
+      <div flex-gt-xs="33">
+        <div layout-gt-xs="row" layout-wrap>
+          <div flex-gt-xs="100">
+            <mat-card>
+              <mat-card-title>Meeting</mat-card-title>
+              <mat-divider></mat-divider>
+              <div>
+
+                <mat-form-field>
+                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                  <!-- <ng-container matColumnDef="clgcode" style="visibility: hidden;">
+                    <th mat-header-cell *matHeaderCellDef style="width: 50px;"> key </th>
+                    <td mat-cell *matCellDef="let element"> {{element.clgcode}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="cardcode">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cardcode}} </td>
+                  </ng-container> -->
+
+                  <ng-container matColumnDef="cardname">
+                    <th mat-header-cell *matHeaderCellDef style="width: 300px;"> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cardname}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="startdate">
+                    <th mat-header-cell *matHeaderCellDef style="width: 150px;"> Start Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="enddate">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> End Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.enddate}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="source">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Source </th>
+                    <td mat-cell *matCellDef="let element"> {{element.source}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="prio">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Priority </th>
+                    <td mat-cell *matCellDef="let element"> {{element.prio}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="details">
+                    <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Details </th>
+                    <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="addedby">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Created By </th>
+                    <td mat-cell *matCellDef="let element"> {{element.addedby}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="createdate">
+                    <th mat-header-cell *matHeaderCellDef style="width: 80px;"> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdate}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="updatedby">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Updated By </th>
+                    <td mat-cell *matCellDef="let element"> {{element.updatedby}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="updatdate">
+                    <th mat-header-cell *matHeaderCellDef style="width: 80px;"> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.updatdate}} </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[50, 100, 500, 1000]"></mat-paginator>
+
+              </div>
+              <mat-divider></mat-divider>
+              <mat-nav-list class="pad-top-none">
+              </mat-nav-list>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <a mat-button color="accent" class="text-upper"></a>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <!-- <div flex-gt-xs="33">
+          <div layout-gt-xs="row" layout-wrap>
+            <div flex-gt-xs="100">
+              <mat-card>
+                <mat-card-title>MIS</mat-card-title>
+                <mat-divider></mat-divider>
+                
+                <mat-divider></mat-divider>
+                <mat-card-actions>
+                  <a mat-button color="accent" class="text-upper">View All</a>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+        <div flex-gt-xs="33">
+          <div layout-gt-xs="row" layout-wrap>
+            <div flex-gt-xs="100">
+              <mat-card>
+                <mat-card-title>Other</mat-card-title>
+                <mat-divider></mat-divider>
+                
+              </mat-card>
+            </div>
+          </div>
+        </div> -->
+    </div>
+  </div>
+</div>

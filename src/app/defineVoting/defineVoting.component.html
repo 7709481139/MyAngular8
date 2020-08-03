@@ -1,0 +1,84 @@
+<form #defineVotingForm="ngForm" (ngSubmit)="postVotingActivity()" ngNativeValidate>
+    <br><br> <br><br>
+    <div class="container  shadow p-3 mb-5 bg-white rounded">
+        <div style="text-align: center;" >
+            
+            <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Define new voting</h5>
+            <br>
+            <div class="form-row">
+               <div class="form-group col-md-3">
+                    <mat-form-field> <input matInput placeholder="Stage ID" name="Stage ID" [(ngModel)]="model.prevactvty" disabled>
+                    </mat-form-field>
+                  </div>
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <mat-label>Company</mat-label>
+                        <mat-select name="cardCode" [(ngModel)]="model.cardCode" required disabled>
+                            <mat-option *ngFor="let bp of bplist" [value]="bp.cardCode">{{bp.cardName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-3">
+                    <mat-form-field>
+                      <mat-label>Stage</mat-label>              
+                      <mat-select name="subject" [(ngModel)]="model.subject" required disabled>
+                        <mat-option *ngFor="let SUB of CompSubjects" [value]="SUB.code">{{SUB.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                <div class="form-group col-md-3">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="startdate" placeholder="Start date" name="startdate"
+                            [(ngModel)]="model.startdate" (dateChange)="SetVotingCloseDate($event.value)" required>
+                        <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+                        <mat-datepicker #startdate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group col-md-7">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="enddate" placeholder="End date" name="enddate"
+                            [(ngModel)]="model.enddate" required>
+                        <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+                        <mat-datepicker #enddate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                
+                <div class="form-group col-md-3">
+                    <label class=".bmd-label-placeholder">Time.</label>
+                </div> 
+
+                <div class="form-group col-md-2">
+                    <div class="ngx-timepicker-field-example">
+                        <ngx-timepicker-field [format]="24" [defaultTime]="'12:00'" id="time" name="time"
+                            [(ngModel)]="model.time"></ngx-timepicker-field>
+                    </div>
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label class=".bmd-label-placeholder">Voting open for hours.</label>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <div class="ngx-timepicker-field-example">
+                        <ngx-timepicker-field [format]="24" [defaultTime]="'08:00'" id="opentime" name="opentime"
+                            [(ngModel)]="model.opentime"></ngx-timepicker-field>
+                    </div>
+
+                </div>
+                <br><br><br><br>
+                <div class="form-group col-md-12" style="margin-left: auto;">
+                    <textarea id="remark" placeholder="Notes..." class="md-textarea form-control" rows="10"
+                        name="remark" [(ngModel)]="model.remark"></textarea>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <button class="btn btn-success mr-4" type="submit"> submit</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</form><br><br>

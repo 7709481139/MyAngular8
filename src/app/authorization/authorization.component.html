@@ -1,0 +1,32 @@
+<form #RolesAuthForm="ngForm" (ngSubmit)="SetRolesAuth()" ngNativeValidate>
+  <br><br>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+    <div style="text-align: center;  "><br><br>      
+      <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Authorization</h5>
+      <hr>
+      <div class="form-row">       
+        <div class="form-group col-md-4">
+          <mat-form-field>
+            <mat-label>Roles</mat-label>
+           <mat-select name="user" [(ngModel)]="model.role" (selectionChange)="GetAssignedRoleComponent($event.value)" required>
+            
+              <mat-option *ngFor="let role of roleslist" [value]="role" >{{role}}</mat-option>
+            </mat-select>
+          </mat-form-field>    
+        </div>
+        <div class="form-group col-md-4">
+          <mat-form-field>
+            <mat-label>Forms</mat-label>
+            <mat-select name="MyForm" [(ngModel)]="model.component"  required multiple>   
+              <mat-option *ngFor="let component of ComponentList" [value]="component">{{component}}</mat-option>
+            </mat-select>            
+          </mat-form-field>
+              </div>
+        <div class="form-group col-md-12">
+          <button class="btn btn-success mr-4" type="submit"> Assign</button>
+          <button class="btn btn-default" type="button" (click)="reloadComponent()"> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

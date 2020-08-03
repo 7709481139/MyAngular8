@@ -1,0 +1,164 @@
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary mat-elevation-z6" >
+  <div class="container">   
+<!--<span><mat-icon color="accent">eco</mat-icon>  
+</span>-->
+<div class="logo"></div>
+    <a class="navbar-brand" [routerLink]="['/Home']">A91Partners</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <!--<a class="nav-link" [routerLink]="['/Dashboard']">Dashboard </a>-->
+
+          <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic">
+              Dashboard <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+
+             
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Dashboard']">Dashboard</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="btn-group" *ngIf=false dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic"> MIS <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" 
+            role="menu" aria-labelledby="button-basic">
+
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/MISupload']">MIS Upload</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic">
+              Portfolio <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+
+              <li *ngIf="authModel.Rt_clientreg" role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/ClientRegistration']">Opportunity</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li *ngIf=authModel.Rt_portfolio role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Portfolio']">Voting Stages</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div *ngIf=authModel.Rt_voting class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic">
+              Voting <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+
+              <!--<li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/DefineVoting']">Define Voting</a>
+              </li>-->
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Voting']">Voting Process</a>
+              </li>
+           <!--   <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Votingreport']">Voting Report</a>
+              </li>-->
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Votingcommentryreport']">Voting Commentary Report</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+       <!-- <li>
+          <div class="btn-group" *ngIf=false dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic">
+              Meeting <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Boardmeeting']">Board Meetings</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Weeklymeeting']">Weekly Meeting</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="btn-group" *ngIf=false dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic"> CapTable <span class="caret"></span> </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/CapTable']">Add CapTable</a>
+              </li>
+
+            </ul>
+          </div>
+
+        </li>-->
+        <li>
+          <div *ngIf=authModel.Rt_register class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic">
+              Admin <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Register']">Register New User</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Resetpassword']">Change Password</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Createrole']">Role</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem" routerLinkActive="active">
+                <a class="dropdown-item" [routerLink]="['/Authorization']">Authorization</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+      
+      </ul>
+
+      <div *ngIf="loggedIn()" class="btn-group" dropdown >
+        <button class="dropdown-toggle btn btn-primary shadow" style="background: #ff4081;" dropdownToggle>
+          Welcome {{authService.decodedToken?.unique_name | titlecase}} </button>
+
+        <div class="dropdown-menu mt-3 " *dropdownMenu >
+          <a class="dropdown-item" [routerLink]="['/Register']"><i class="fa fa-user"></i> Edit Profile </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Sign Out </a>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,10 @@
+<form #votingFrom="ngForm">
+  <br><br><br><br>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+    <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Voting</h5>
+    <div *ngFor="let vote of votings">
+      <app-singlevote [Dovoting]="vote"></app-singlevote>
+    </div>
+  </div>
+
+</form>

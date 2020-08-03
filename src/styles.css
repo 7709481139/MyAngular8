@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootswatch/dist/flatly/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+/* @import '~@ag-grid-community/all-modules/dist/styles/ag-grid.css';
+@import '~@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css'; */
+
+ 
+html, body { height: 100%;   }
+body { margin: 0;     }
+.igx-grid__thead-item .igx-grid__thead-title, .igx-grid__thead-item .igx-grid__th {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    color: white;
+    background: #1d7292;
+}
+div{
+    font-family: Zahrah /* Replace with your custom font */, sans-serif !important; 
+    /* Add !important to overwrite all elements */
+  }
+  @font-face {
+    font-family: Zahrah;
+    src: url("/Zahrah.otf") format("opentype");
+}
+ 

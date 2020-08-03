@@ -1,0 +1,23 @@
+<form #roleForm="ngForm" (ngSubmit)="CreateRole()" ngNativeValidate>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+    <div style="text-align: center;  "><br><br>
+      <br><br>      
+      <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Create Role</h5>
+      <hr>
+      <div class="form-row">   
+
+        <div class="form-group col-md-6">
+          <mat-form-field>
+            <input matInput    [formControl]="myControl" type="text" placeholder="Role" name="name" [(ngModel)]="model.name"
+              >
+          </mat-form-field>
+        </div>
+
+        <div class="form-group col-md-6">
+          <button class="btn btn-success mr-4" type="submit"> Submit</button>
+          <button class="btn btn-default" type="button" (click)="reloadComponent()"> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

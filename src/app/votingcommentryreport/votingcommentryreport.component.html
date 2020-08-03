@@ -1,0 +1,99 @@
+
+
+<br>
+
+<div class="shadow p-3 mb-5 bg-white rounded" >
+  <br>
+  <h5 class="shadow-sm p-1 mb-1 rounded" style="background-color: #0b99b9;color: white;font-family: 'Zahrah';">Voting commentary report</h5>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <mat-form-field>
+          <input matInput [matDatepicker]="fromdate" placeholder="From Date" name="fromdate"  
+          [(ngModel)]="model.fromdate"             >
+          <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+          <mat-datepicker #fromdate></mat-datepicker>
+      </mat-form-field>
+  </div>
+  
+  <div class="form-group col-md-3">
+      <mat-form-field>
+          <input matInput [matDatepicker]="todate" placeholder="To date" name="todate"   
+          
+            [(ngModel)]="model.todate"      >
+          <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+          <mat-datepicker #todate></mat-datepicker>
+      </mat-form-field>
+  </div>
+  <div class="form-group col-md-3">
+    <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select name="Type" [(ngModel)]="model.status">
+      <mat-option  value="All" selected >All</mat-option>
+      <mat-option  value="Open">Open</mat-option>
+      <mat-option  value="Closed">Closed</mat-option>
+    </mat-select>
+  </mat-form-field> 
+  </div>
+  <div class="form-group col-md-3">
+  <button style="background: #7ace0b;" type="button" 
+  mat-button (click)="LoadVotingResultData()" class="shadow"> View</button>
+  </div>
+  </div>
+  <!--<div class="table-responsive">
+    <table class="table table-striped ">
+      <thead>
+        <tr>
+          <th scope="col">Company</th>
+          <th scope="col">Stage</th>
+          <th scope="col">Pre Avg</th>
+          <th scope="col">Post Avg</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let TT of votingDataList">
+        <tr>
+          <td scope="col"> {{TT.cardname}}</td>
+          <td scope="col"> {{TT.stage}}</td>
+          <td scope="col"> {{TT.pre_avg | number}}</td>
+          <td scope="col"> {{TT.post_avg | number}}</td>
+          <td scope="col"> {{TT.status}}</td>
+        </tr>
+
+        <button type="button" (click)="showMyContainer=!showMyContainer" class="btn btn-link">Details</button>
+        <table *ngIf="showMyContainer" class="table table-striped ">
+          <thead>
+            <tr>
+              <th scope="col">User</th>              
+              <th scope="col">Pre </th>              
+              <th scope="col">Comment </th>
+              <th scope="col">Post </th>
+              <th scope="col">Comment </th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let T2 of TT.voteLines">
+            <tr>
+              <td scope="col"> {{T2.user | titlecase}}</td>              
+              <td scope="col"> {{T2.pre_rate}}</td>
+              <td scope="col"> {{T2.pre_note}}</td>
+              <td scope="col"> {{T2.post_rate}}</td>
+              <td scope="col"> {{T2.post_note}}</td>
+              <td scope="col"> {{T2.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </tbody>
+    </table>
+  </div>-->
+
+<!--<button (click)="exportButtonHandler()">Export Data to Excel</button>-->
+  <igx-hierarchical-grid #hierarchicalGrid [data]="votingDataList" [autoGenerate]="true"
+  [height]="'600px'" [width]="'100%'"  >
+    <igx-row-island [key]="'votinglinesVM'" [autoGenerate]="true" >
+        
+    </igx-row-island>
+   
+</igx-hierarchical-grid>
+</div>
+
+

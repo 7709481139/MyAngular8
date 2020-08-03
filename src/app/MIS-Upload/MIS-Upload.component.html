@@ -1,0 +1,84 @@
+<form #MISForm="ngForm" ngNativeValidate>
+  <br><br><br><br>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+    <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">MIS</h5>
+
+    <mat-tab-group>
+      <mat-tab label="MIS-Upload">
+        <br>
+        <button class="btn btn-success" type="button" (click)="SubmitData()"> Submit</button>
+        <br><br>
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select name="Type" [(ngModel)]="model.Type">
+                <mat-option *ngFor="let SUB of TypeList" [value]="SUB.Code">{{SUB.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group col-md-12">
+            <input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls, .csv" />
+            <table class="sjs-table">
+              <tbody>
+                <tr *ngFor="let row of data">
+                  <td *ngFor="let val of row">
+                    {{val}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </mat-tab>
+
+      <mat-tab label="MIS-Report">
+        <br><br>
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select name="Type" [(ngModel)]="model.RPTType" (ngModelChange)="GetMISReport()">
+                <mat-option *ngFor="let SUB of TypeList" [value]="SUB.Code">{{SUB.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-12">
+            <div class="table-responsive">
+              <table class="table table-striped ">
+                <thead>
+                  <tr>
+                    <th scope="col">FY Year</th>
+                    <th scope="col">Period</th>
+                    <th scope="col">CardCode</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">GL Code</th>
+                    <th scope="col">GL Name</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let TT of ReportData">
+                  <tr >
+                    <td scope="col"> {{TT.fyyear}}</td>
+                    <td scope="col"> {{TT.period }}</td>
+                    <td scope="col"> {{TT.cardcode }}</td>
+                    <td scope="col"> {{TT.cardname }}</td>
+                    <td scope="col"> {{TT.glcode }}</td>
+                    <td scope="col"> {{TT.glname }}</td>
+                    <td scope="col" style="text-align: right;"> {{TT.amnt | number }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</form>

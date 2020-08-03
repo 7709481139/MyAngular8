@@ -1,0 +1,37 @@
+<form #PortfolioComloanceFrom="ngForm">
+  <br><br><br><br>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+    <div style="text-align: left;  ">
+      
+      
+      <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Voting Stages</h5>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Select client </mat-label>
+        <mat-select name="cardCode" [(ngModel)]="model.cardCode" (ngModelChange)="GetComplianceList()">
+          <mat-option *ngFor="let bp of bplist" [value]="bp.cardCode">{{bp.cardName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <app-stage *ngIf="loadChildComponent" [CompliancesCardCode]=CompliancesCardCode [CompSubjects]=CompSubjects
+        [CompTypes]=CompTypes
+          [SAPUserss]=SAPUserss [ContactPersons]=ContactPersons [StatusList]=StatusList [Priority]=Priority
+          loadChildComponent=true>
+        </app-stage>
+      </div>
+      <button type="" class="btn btn-primary" (click)="loadMyChildComponent();">Create new stage</button>
+      <br>
+
+      <div *ngIf='loadExistingStageComponent'></div>
+      <br>
+      <div *ngFor="let CMP of Compliances">
+        <app-stage [ComplienceHeader]="CMP" [CompSubjects]=CompSubjects [CompTypes]=CompTypes [SAPUserss]=SAPUserss
+          [ContactPersons]=ContactPersons [StatusList]=StatusList [Priority]=Priority [loadExistingStageComponent]=loadExistingStageComponent></app-stage>
+          
+      </div>
+
+
+    </div>
+  </div>
+</form>

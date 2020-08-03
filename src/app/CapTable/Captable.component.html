@@ -1,0 +1,60 @@
+<form #CapTableFrom="ngForm" (ngSubmit)="submitCapTableDetails()">
+  <br><br><br><br>
+  <div class="container  shadow p-3 mb-5 bg-white rounded">
+    <div style="text-align: left;  ">
+      
+      
+      <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">CapTable</h5>
+    </div>
+
+    <fieldset class="border p-2">
+      <legend class="w-auto shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 2ex;">General Details</legend>
+      <div class="form-group row">
+
+        <mat-form-field class="col-4">
+          <mat-label>Select client </mat-label>
+          <mat-select name="cardCode" [(ngModel)]="model.cardCode">
+            <mat-option *ngFor="let bp of bplist" [value]="bp.cardCode">{{bp.cardName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-4">
+          <input matInput [matDatepicker]="picker" autocomplete="off" name="Date" [(ngModel)]="model.Date"
+            placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+    </fieldset>
+    <br><br><br>
+    <fieldset class="border p-2">
+      <legend class="w-auto shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 2ex;">Share Details</legend>
+      <div class="form-group row">
+
+        <mat-form-field class="col-4">
+          <input matInput placeholder="Share Holder Name" autocomplete="off" name="ShName" [(ngModel)]="model.ShName">
+        </mat-form-field>
+
+        <mat-form-field class="col-4">
+          <input matInput placeholder="Share Type" autocomplete="off" name="ShType" [(ngModel)]="model.ShType">
+        </mat-form-field>
+        <mat-form-field class="col-4">
+          <input matInput placeholder="Total Share" autocomplete="off" name="TShare" [(ngModel)]="model.TShare"
+            type="number">
+        </mat-form-field>
+        <mat-form-field class="col-4">
+          <input matInput placeholder="Holding %" autocomplete="off" name="HoldingPer" [(ngModel)]="model.HoldingPer"
+            type="number">
+        </mat-form-field>
+      </div>
+    </fieldset>
+    <br><br>
+    <div class="col-md-4" style="margin-left:-12px;">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+
+
+  </div>
+</form>

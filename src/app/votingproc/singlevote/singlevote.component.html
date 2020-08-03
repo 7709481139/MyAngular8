@@ -1,0 +1,64 @@
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <b> Voting Id: {{Dovoting.clgcode}}</b> => {{Dovoting.cardname}}
+    </div>
+    <div class="form-group col-md-3">
+        Daterange: {{Dovoting.recontact}} - {{Dovoting.closedate}}
+    </div>
+    <div class="form-group col-md-3">
+        Remarks: {{Dovoting.notes}}
+    </div>
+    <div class="form-group col-md-3">
+        <button class="btn brn-primary" title="submit voting" (click)="submitVoting()">
+            <mat-icon title="create voting"> done_outline</mat-icon>
+        </button>
+    </div>
+    <div class="form-group col-md-12">
+        <mat-tab-group>
+            <mat-tab label="Pre-discussion">
+                <div class="form-row" >
+                    <div [ngStyle]="Dovoting.ispreedit== false ?{'visibility': 'hidden'} : {}"
+                     class="form-group col-md-3">
+                        <rating  [(ngModel)]="Dovoting.prediscussionrate" [max]="max" (onHover)="hoveringOver($event)"
+                            (onLeave)="resetStar()"  [titles]="['one','two','three']" style="color: #00d023;"></rating>
+                        <span  class="label"
+                            [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+                            [ngStyle]="{display: (overStar ) ? 'inline' : 'none'}">{{percent}}%</span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        Rate: {{Dovoting.prediscussionrate}}
+                    </div>
+                    <div  class="form-group col-md-11">
+                        <textarea [disabled]="!Dovoting.ispreedit" matInput [(ngModel)]="Dovoting.prediscussionncommnets"
+                            placeholder="pre discussion comments..." class="md-textarea form-control" rows="4">
+                        </textarea>
+
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Post-discussion">
+                <div class="form-row">
+                    <div [ngStyle]="Dovoting.ispostedit== false ?{'visibility': 'hidden'} : {}" class="form-group col-md-3">
+                        <rating [(ngModel)]="Dovoting.postdiscussionrate" [max]="max" (onHover)="hoveringOver($event)"
+                            (onLeave)="resetStar()" [titles]="['one','two','three']" style="color: #00d023;"></rating>
+                        <span class="label"
+                            [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+                            [ngStyle]="{display: (overStar ) ? 'inline' : 'none'}">{{percent}}%</span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        Rate: {{Dovoting.postdiscussionrate}}
+                    </div>
+                    <div class="form-group col-md-11">                        
+                            <textarea [disabled]="!Dovoting.ispostedit" matInput [(ngModel)]="Dovoting.postdiscussioncommnets"
+                            placeholder="Post discussion comments..." class="md-textarea form-control" rows="4"></textarea>
+                        
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
+
+
+</div>

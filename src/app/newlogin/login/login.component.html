@@ -1,0 +1,31 @@
+<div class="bg">
+<div class="login-container" >
+  <div class="login-content">
+    <!-- <mat-form-field>
+      <mat-icon matPrefix>person_outline</mat-icon>
+      <input autofocus type="text" matInput placeholder="Username" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-icon matPrefix>lock_outline</mat-icon>
+      <input type="password" autocomplete="false" matInput placeholder="Password" formControlName="password">
+    </mat-form-field> -->
+       <form *ngIf="!loggedIn()" #loginForm="ngForm"  (ngSubmit)="login()">
+        <mat-form-field>
+          <mat-icon matPrefix>person_outline</mat-icon>
+        <input matInput class="form-control mr-sm-2" type="text" name="username" placeholder="UserName" required
+          [(ngModel)]="model.username">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix>lock_outline</mat-icon>
+        <input matInput  type="password" name="password" placeholder="Password" required
+          [(ngModel)]="model.password">
+        </mat-form-field>
+        <button  mat-raised-button [disabled]="!loginForm.valid"  type="submit" style="background-color: #00c4ff;color:white">LogIn</button>
+      </form>
+  </div>
+
+
+  
+</div>
+</div>

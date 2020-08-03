@@ -1,0 +1,166 @@
+<form #businessPartnerForm="ngForm" (ngSubmit)="submitBusinessPartner()" ngNativeValidate>
+<br><br><br><br>
+<div class="container  shadow p-3 mb-5 bg-white rounded">
+
+  <h5 class="shadow-sm p-3 mb-5 rounded" style="background-color: #0b99b9;color: white;">Opportunity 
+    <button style="margin-left: 50%;background: #7ace0b;" type="button" 
+    mat-button (click)="openBPListDialog()" class="shadow"> List of companies</button>
+  </h5>
+    
+
+    <p><strong> General Details</strong></p>
+     <!-- {{businessPartnerForm.value | json}}   -->
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="Client Name" name="cardname" [(ngModel)]="model.cardname"
+            required> </mat-form-field>
+      </div>
+     <!-- <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="E-Mail" name="email" [(ngModel)]="model.email" required>
+        </mat-form-field>
+      </div>-->
+      <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="Website" name="website" [(ngModel)]="model.website" required>
+        </mat-form-field>
+      </div>
+      <!--<div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="Telephone" name="telephone" [(ngModel)]="model.telephone"
+            required> </mat-form-field>
+      </div>-->
+      <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="Sector" name="sector" [(ngModel)]="model.sector" required>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-4">
+        <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <mat-select name="currency" [(ngModel)]="model.currency" >
+          <mat-option *ngFor="let CR of currlist" [value]="CR.currcode">{{CR.currname}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+      <div class="form-group col-md-4">
+        <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select name="Type" [(ngModel)]="model.type" >
+          <mat-option  value="Opportunity" selected >Opportunity</mat-option>
+          <mat-option  value="Portfolio">Portfolio</mat-option>
+        </mat-select>
+      </mat-form-field>
+        <!-- <mat-form-field> <input matInput placeholder="Currency" name="currency" [(ngModel)]="model.currency" required>
+        </mat-form-field> -->
+      </div>
+    </div>
+    <!--<p><strong> Address Details</strong></p>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="AddressName" name="adressname" [(ngModel)]="model.adressname"
+            required> </mat-form-field>
+      </div>
+      <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="Street" name="street" [(ngModel)]="model.street">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-4">
+        <mat-form-field> <input matInput placeholder="Landmark" name="landmark" [(ngModel)]="model.landmark">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-3">
+        <mat-form-field>
+          <mat-label>Select country</mat-label>
+          <mat-select name="country" [(ngModel)]="model.country" (ngModelChange)="refreshStateList()">
+            <mat-option *ngFor="let CNT of countrylist" [value]="CNT.code">{{CNT.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field>
+          <mat-label>Select state</mat-label>
+          <mat-select name="state" [(ngModel)]="model.state">
+            <mat-option *ngFor="let ST of statelist" [value]="ST.code">{{ST.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="City" name="city" [(ngModel)]="model.city"> </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Postal Code" name="zipcode" [(ngModel)]="model.zipcode">
+        </mat-form-field>
+      </div>
+    </div>-->
+
+    <p><strong> Primary Contact Persons Details</strong></p>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <mat-form-field> <input matInput placeholder="FirstName" name="pfname" [(ngModel)]="model.pfname">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+        <mat-form-field> <input matInput placeholder="LastName" name="plname" [(ngModel)]="model.plname">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Mobile" name="pmobile" [(ngModel)]="model.pmobile">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="E-Mail" name="pemail" [(ngModel)]="model.pemail">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Telephone" name="ptel" [(ngModel)]="model.ptel"> </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Postion" name="pposition" [(ngModel)]="model.pposition">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <p><strong> Secondary Contact Persons Details</strong></p>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <mat-form-field> <input matInput placeholder="FirstName" name="sfname" [(ngModel)]="model.sfname">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+        <mat-form-field> <input matInput placeholder="LastName" name="slname" [(ngModel)]="model.slname">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Mobile" name="smobile" [(ngModel)]="model.smobile">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="E-Mail" name="semail" [(ngModel)]="model.semail">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Telephone" name="stel" [(ngModel)]="model.stel"> </mat-form-field>
+      </div>
+      <div class="form-group col-md-3">
+        <mat-form-field> <input matInput placeholder="Postion" name="sposition" [(ngModel)]="model.sposition">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <p><strong> Tax Details</strong></p>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <mat-form-field> <input matInput placeholder="PAN" name="pan" [(ngModel)]="model.pan"> </mat-form-field>
+      </div>
+      <!--<div class="form-group col-md-6">
+        <mat-form-field> <input matInput placeholder="GST" name="gstin" [(ngModel)]="model.gstin"> </mat-form-field>
+      </div>-->
+      <div class="form-group col-md-6" >
+        <textarea id="remark" placeholder="Remarks..." class="md-textarea form-control" rows="10"
+            name="remark" [(ngModel)]="model.notes"></textarea>
+    </div>
+    </div>
+    <div class="form-group col-md-3">
+    <button  type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+  <br>
+</form>
